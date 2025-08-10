@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Detection Result</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .box {
+      background-color: #2e2e3e;
+      padding: 40px;
+      border-radius: 15px;
+      width: 400px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #00e676;
+    }
+
+    .emotion {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    a {
+      margin-top: 30px;
+      display: inline-block;
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #4CAF50;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    a:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Detected Emotion:</h1>
+    <p class="emotion">{{ emotion }}</p>
+    <a href="{{ url_for('index') }}">Detect Again</a>
+  </div>
+</body>
+</html>
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Face Emotion Detection</title>
+  <style>
+    body {
+      background: #1e1e2f;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      background-color: #2e2e3e;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      width: 400px;
+    }
+    video {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Face Emotion Detection</h1>
+    <video id="video" autoplay></video>
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <form id="uploadForm" method="POST" action="/detect" enctype="multipart/form-data">
+      <input type="hidden" name="image" id="imageInput">
+      <button type="button" onclick="startCamera()">Start Camera</button>
+      <button type="button" onclick="captureAndSubmit()">Capture & Detect</button>
+    </form>
+  </div>
+
+  <script>
+    const video = document.getElementById('video');
+
+    function startCamera() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          video.srcObject = stream;
+        })
+        .catch(error => {
+          console.error('Camera Error:', error);
+        });
+    }
+
+    function captureAndSubmit() {
+      const canvas = document.getElementById('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d').drawImage(video, 0, 0);
+
+      canvas.toBlob(blob => {
+        const file = new File([blob], "frame.jpg", { type: "image/jpeg" });
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+
+        const input = document.getElementById('imageInput');
+        input.files = dataTransfer.files;
+
+        document.getElementById('uploadForm').submit();
+      }, "image/jpeg");
+    }
+  </script>
+</body>
+</html> -->
